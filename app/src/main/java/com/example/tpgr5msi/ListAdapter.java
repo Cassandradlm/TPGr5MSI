@@ -2,7 +2,6 @@ package com.example.tpgr5msi;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomListAdapter extends BaseAdapter {
+public class ListAdapter extends BaseAdapter {
 
-    private ArrayList<Product> listData;
+    private ArrayList<Voiture_class> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public CustomListAdapter(Context aContext, ArrayList<Product> listData) {
+    public ListAdapter(Context aContext, ArrayList<Voiture_class> listData) {
         this.context = aContext;
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
@@ -29,34 +28,32 @@ public class CustomListAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.activity_custom_list_view, null);
             holder = new ViewHolder();
             holder.id = (TextView) convertView.findViewById(R.id.textId);
-            holder.name = (TextView) convertView.findViewById(R.id.textName);
-            holder.type = (TextView) convertView.findViewById(R.id.textType);
-            holder.price = (TextView) convertView.findViewById(R.id.textPrice);
+            holder.modele = (TextView) convertView.findViewById(R.id.textModele);
+            holder.Marque = (TextView) convertView.findViewById(R.id.textMarque);
+            holder.Carburant = (TextView) convertView.findViewById(R.id.textCarburant);
+            holder.prix = (TextView) convertView.findViewById(R.id.textPrix);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
-            Log.v("position",""+position);
         }
 
         if(position % 2 == 0){
             convertView.setBackgroundColor(Color.rgb(150,245,170));
         }
 
-        Product product = this.listData.get(position);
+        Voiture_class product = this.listData.get(position);
         holder.id.setText(""+product.getId());
-        holder.name.setText(product.getName());
-        holder.type.setText(product.getType());
-        holder.price.setText(""+product.getPrice());
-        Log.v("CUSTOM",""+product.getName()+" "+product.getType());
+        holder.modele.setText(product.getModele());
+        holder.Marque.setText(product.getMarque());
+        holder.Carburant.setText(product.getCarburant());
+        holder.prix.setText(String.valueOf(product.getPrix()));
 
         return convertView;
     }
 
     static class ViewHolder {
-        TextView id;
-        TextView name;
-        TextView type;
-        TextView price;
+        TextView id, modele, Marque, Carburant, prix;
     }
 
     public int getCount() {

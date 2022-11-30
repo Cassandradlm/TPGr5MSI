@@ -2,16 +2,13 @@ package com.example.tpgr5msi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.tpgr5msi.databinding.ActivityMainBinding;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -26,34 +23,21 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-/*
-        try {
-            JSONObject json = new JSONObject();
-            json.put("id",39);
-            json.put("name","Pomme");
-            json.put("type","Fruit");
-            json.put("price",10.0);
-            ConnectionRest connectionRest = new ConnectionRest();
-            //connectionRest.setJsonObj(json);
-            connectionRest.execute("GET");
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-        ArrayList<Product> listData = getListData();
+        ArrayList<Voiture_class> listData = getListData();
         final ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new CustomListAdapter(this, listData));
+        listView.setAdapter(new ListAdapter(this, listData));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
-                Product upload = (Product) o;
-                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                Voiture_class upload = (Voiture_class) o;
+                Intent intent = new Intent(MainActivity.this, EditVoitureActivity.class);
                 intent.putExtra("id", upload.getId());
-                intent.putExtra("name", upload.getName());
-                intent.putExtra("type", upload.getType());
-                intent.putExtra("price", upload.getPrice());
+                intent.putExtra("modele", upload.getModele());
+                intent.putExtra("Marque", upload.getMarque());
+                intent.putExtra("Carburant", upload.getCarburant());
+                intent.putExtra("prix", upload.getPrix());
                 startActivity(intent);
             }
         });
@@ -61,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                Intent intent = new Intent(MainActivity.this, EditVoitureActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public ArrayList<Product> getListData(){
+    public ArrayList<Voiture_class> getListData(){
         try{
-            ConnectionRest connectionRest = new ConnectionRest();
+            Connection_REST_API connectionRest = new Connection_REST_API();
             connectionRest.execute("GET");
             String listJsonObjs = connectionRest.get();
             if(listJsonObjs != null) {

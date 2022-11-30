@@ -16,10 +16,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ConnectionRest extends AsyncTask<String, Void, String> {
-    private final static String URL = "https://api.munier.me/gr0/product/";
+public class Connection_REST_API extends AsyncTask<String, Void, String> {
+    private final static String URL = "https://api.munier.me/gr141831/voiture/";
     private JSONObject jsonObj = null;
 
     protected String doInBackground(String... strings) {
@@ -86,12 +85,12 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
         return response.toString();
     }
 
-    public ArrayList<Product> parse(final String json) {
+    public ArrayList<Voiture_class> parse(final String json) {
         try {
             final ArrayList products = new ArrayList<>();
             final JSONArray jProductArray = new JSONArray(json);
             for (int i = 0; i < jProductArray.length(); i++) {
-                products.add(new Product(jProductArray.optJSONObject(i)));
+                products.add(new Voiture_class(jProductArray.optJSONObject(i)));
             }
 
             return products;

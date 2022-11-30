@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditActivity">
+    tools:context=".EditVoitureActivity">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -42,19 +42,19 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textview_name"
+                android:id="@+id/textview_modele"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom :"
+                android:text="Modele :"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/nameEditTxt"
+                android:id="@+id/modeleEditTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Nom"
+                android:text="Modele"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -63,19 +63,19 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textview_type"
+                android:id="@+id/textview_marque"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type :"
+                android:text="Marque :"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/typeEditTxt"
+                android:id="@+id/marqueEditTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Type"
+                android:text="Marque"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -84,14 +84,35 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textview_price"
+                android:id="@+id/textview_carburant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carburant :"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/carburantEditTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Carburant"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_prix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Prix :"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/priceEditTxt"
+                android:id="@+id/prixEditTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
