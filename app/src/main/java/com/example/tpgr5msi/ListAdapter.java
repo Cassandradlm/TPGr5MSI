@@ -39,7 +39,7 @@ public class ListAdapter extends BaseAdapter {
         }
 
         if(position % 2 == 0){
-            convertView.setBackgroundColor(Color.rgb(150,245,170));
+            convertView.setBackgroundColor(Color.rgb(255, 240, 238));
         }
 
         Voiture_class product = this.listData.get(position);
